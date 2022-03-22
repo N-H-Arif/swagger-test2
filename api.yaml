@@ -1,0 +1,172 @@
+swagger: "2.0"
+info:
+  title: Project API
+  description: Project Api Documentation
+  version: 1.0
+  contact:
+    email: nokimulhasan@iut-dhaka.edu
+  licence:
+    name: Apache 2.0
+    url: "http://apache.org/"
+  servers:
+    -url: "http://139.59.24.152:5000"
+    description: Local server
+
+
+schemes: [http,https]
+
+paths:
+
+#Create User
+  /createuser:
+    post:
+      summary: posting data
+      produces: 
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+      - in: body
+        name: user
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+            username:
+              type: string
+            password:
+              type: string
+            passwordConfirmation:
+              type: string
+            currentInstitute:
+              type: string
+            currentPosition:
+              type: string
+            phone: 
+              type: string
+      responses:
+        200:
+          description: OK
+
+#Create OTP
+  /createotp:
+    post:
+      summary: posting otp
+      produces: 
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+      - in: body
+        name: user
+        schema:
+          type: object
+          properties:
+            userid:
+              type: string
+      responses:
+        200:
+          description: OK
+
+#OTP verify
+  /otpverify:
+    post:
+      summary: otp verify
+      produces: 
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+      - in: body
+        name: user
+        schema:
+          type: object
+          properties:
+            otp:
+              type: string
+            userid:
+              type: string
+      responses:
+        200:
+          description: OK
+
+#user login
+  /userlogin:
+    post:
+      summary: login user
+      produces: 
+        - application/json
+      consumes:
+        - application/json
+
+      parameters:
+      - in: body
+        name: user
+        schema:
+          type: object
+          properties:
+            userId:
+              type: string
+            password:
+              type: string
+      responses:
+        200:
+          description: OK
+  
+#Create Quiz
+  /createquiz:
+    post:
+      summary: posting data
+      produces: 
+        - application/json
+      consumes:
+        - application/json
+      parameters:
+      - in: body
+        name: user
+        schema:
+          type: object
+          properties:
+            title:
+              type: string
+            type:
+              type: string
+            status:
+              type: string
+            intervalType:
+              type: string
+            description:
+              type: string
+            instruction:
+              type: string
+            slug: 
+              type: string
+            tags: 
+              type: string
+            category: 
+              type: string
+            totalQuestion: 
+              type: string
+            totalMarks: 
+              type: string
+            totalTimeInMinutes: 
+              type: string
+            startTime: 
+              type: string
+            endTime: 
+              type: string
+
+      responses:
+        200:
+          description: OK
+#search user(not working)
+  /usersQuery:
+    get:
+      parameters:
+      - in: query
+        name: id
+        type: integer
+      responses:
+        200:
+          description: OK
